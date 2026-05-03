@@ -1,0 +1,30 @@
+// import logo from './logo.svg';
+// import './App.css';
+import AddExpense from './components/AddExpense';
+import Dashboard from './components/Dashboard';
+import Home from './components/Home';
+import Login from './components/Login';
+import ManageExpense from './components/ManageExpense';
+import Navbar from './components/Navbar';
+import Signup from './components/Signup';
+import { BrowserRouter, Routes , Route } from 'react-router-dom';
+function App() {
+  return (
+    <div className="App">
+    <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route path="/signup" element={<Signup/>}></Route>
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/add-expense" element={<AddExpense/>}></Route>
+        <Route path="/manage-expense" element={<ManageExpense/>}></Route>
+      </Routes>
+    </BrowserRouter>
+   
+    </div>
+  );
+}
+
+export default App;
