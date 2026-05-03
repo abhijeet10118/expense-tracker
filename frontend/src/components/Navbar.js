@@ -59,6 +59,11 @@ const Navbar = () => {
   </Link>
 </li>
 <li className="nav-item">
+  <Link className="nav-link " to="/expense-report">
+    <i className="fa-solid fa-list-check me-1"></i> Expense Report
+  </Link>
+</li>
+<li className="nav-item">
   <Link className="nav-link " to="/change-password">
     <i className="fa-solid fa-key me-1"></i>Change Password
   </Link>
