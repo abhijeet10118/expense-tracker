@@ -101,3 +101,23 @@ def search_expense(request,user_id):
         agg=expense.aggregate(Sum('ExpenseCost'))
         total=agg['ExpenseCost__sum'] or 0
         return JsonResponse({'expenses':expense_list,'total':total})
+    
+@csrf_exempt
+def manage_expense(request,user_id):
+    if request.method=='POST':
+        data=json.loads(request.body)
+        old_password=data.get('OldPassword')
+        new_password=data.get('NewPassword')
+        try:
+            user = UserDetail.objects.get(id=user_id)
+            if(old_password!=user.Password):
+                return JsonResponse({'message': 'Old password dose not match'}, status=400)
+            
+            user.Password=new_password
+            user.save()
+            return JsonResponse({'message': 'Password Updated'}, status=200)
+
+           
+
+        except UserDetail.DoesNotExist:
+            return JsonResponse({'message': 'User not found'}, status=404)
