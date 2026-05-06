@@ -1,0 +1,29 @@
+.card-hover {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-hover:hover::before {
+  opacity: 1;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* make content stay above overlay */
+.card-hover .card-body {
+  position: relative;
+  z-index: 1;
+}

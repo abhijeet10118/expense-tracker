@@ -103,7 +103,7 @@ def search_expense(request,user_id):
         return JsonResponse({'expenses':expense_list,'total':total})
     
 @csrf_exempt
-def manage_expense(request,user_id):
+def change_password(request,user_id):
     if request.method=='POST':
         data=json.loads(request.body)
         old_password=data.get('OldPassword')
