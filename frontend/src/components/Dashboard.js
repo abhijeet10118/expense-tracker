@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+import {Pie} from 'react-chartjs-2';
+import {Chart,ArcElement,Tooltip,Legend} from 'chart.js';
+Chart.register(ArcElement,Tooltip,Legend);
 const Dashboard = () => {
 
     const navigate = useNavigate(); 
@@ -13,6 +16,32 @@ const Dashboard = () => {
     const [Last30DayExpense,setLast30DayExpense]=useState(0);
     const [YearExpense,setYearExpense]=useState(0);
     const [TotalExpense,setTotalExpense]=useState(0);
+    
+    const pieData={
+      labels: expenses.map(exp => exp.ExpenseItem),
+
+datasets: [
+  {
+    label: 'Expense',
+    
+    data: expenses.map(exp => parseFloat(exp.ExpenseCost)),
+
+    backgroundColor: [
+      'red',
+      'blue',
+      'green'
+    ],
+
+    borderWidth: 1,
+  }
+]
+    }
+    
+    
+    
+    
+    
+    
     useEffect(() => {
         if (!userId) {
             navigate('/login');
@@ -147,6 +176,10 @@ const Dashboard = () => {
       </div>
     </div>
 
+  </div>
+  <div style={{width:'400px', height:'400px',  margin: 'auto'}}>
+    <h4 className='text-center'>Expense Distribution</h4>
+    <Pie data={pieData}/>
   </div>
 </div>
     );
