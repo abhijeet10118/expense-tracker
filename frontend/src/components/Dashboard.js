@@ -100,7 +100,7 @@ datasets: [
             grandsum+=amount;
           })
           setTodayExpense(todaysum);
-          setYearExpense(yesterdaysum);
+          setYesterdayExpenseE(yesterdaysum);
           setLast7DayExpense(last7daysum);
           setLast30DayExpense(last30daysum);
           setYearExpense(yearsum);
